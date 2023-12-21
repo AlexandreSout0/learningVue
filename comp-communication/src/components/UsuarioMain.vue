@@ -9,7 +9,8 @@
         <hr>
         <div class="componentes">
             <app-UsuarioInfo :nome="nome" :idade="idade" @nomeMudou="nome = $event.novoNome + $event.antigo" :reiniciarFn="reiniciarNome2callbak"/>
-            <app-AppUsuarioEditar :idade="idade" @idadeMudou="idade = $event" />
+            <app-AppUsuarioEditar :idade="idade"  />  
+            <!-- @idadeMudou="idade = $event" -->
         </div>
     </div>
 </template>

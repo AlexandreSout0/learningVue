@@ -12,7 +12,8 @@
 </template>
 
 <script>
-//import barramento from '@/barramento'
+import barramento from '@/barramento.js';
+
 
 export default {
    //props: ['nome'],
@@ -28,18 +29,21 @@ export default {
     inverteNome() {
         return this.nome.split('').reverse().join('')
     },
-
+    handleEventoPersonalizado(payload) {
+      // Lógica para lidar com o evento personalizado
+      this.mensagemRecebida = payload.mensagem;
+    },
     reiniciarNome() {
         const antigo = this.nome;
         const novoNome = 'Alexandre';
         this.$emit('nomeMudou', { novoNome, antigo});
     }   
    },
-//    created() {
-//     barramento.$on('idadeMudou', idade => {
-//         console.log('A idade mudou para:', idade);
-//     })
-//    }
+   created() {
+    barramento.$quandoIdadeMudar( idade => {
+        this.idade = idade
+    })
+   }
 }
 </script>
 
